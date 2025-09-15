@@ -1,3 +1,5 @@
+//Autores : André Felipe Alecrim Leão Cadena Magalhães e João Pedro Bento Severo
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -6,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String continuar;
-
+        ResumoVenda resumo = new ResumoVenda();
         do {
             System.out.println("\n----- ATENDIMENTO AO CLIENTE -----");
 
@@ -42,14 +44,17 @@ public class Main {
                 cliente.getIngressos().add(ingresso); 
             }
 
-            ResumoVenda resumo = new ResumoVenda();
-            resumo.exibirResumo(cliente, scanner); 
 
+
+            if(resumo.processarPagamento(resumo.exibirResumo(cliente), scanner)) {
+                resumo.clientes.add(cliente);
+            }
             System.out.print("\nAtender próximo cliente? (S/N): ");
             scanner.nextLine();
             continuar = scanner.nextLine().trim().toLowerCase();
 
         } while(continuar.equals("s"));
+        resumo.relotorioDia();
         System.out.println("Programa encerrado.");
         scanner.close();
     }

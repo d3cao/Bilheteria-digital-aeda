@@ -31,7 +31,7 @@ public class bilhete {
         }else if (tipo == 3){
             return descontoPromocional;
         } else {
-            return 1;
+            return 0;
         }
     }
 

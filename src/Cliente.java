@@ -9,6 +9,10 @@ public class Cliente {
     private double valor_total;
     private boolean gratuidade = false;
 
+    public void setValor_total(double valor_total) {
+        this.valor_total = valor_total;
+    }
+
     public Cliente(String nome, int idade) {
         this.ingressos = new ArrayList<>();
         this.nome = nome;
