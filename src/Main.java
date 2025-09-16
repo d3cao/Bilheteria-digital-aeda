@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String continuar;
 
         do {
-            System.out.println("----- ATENDIMENTO AO CLIENTE -----");
+            System.out.println("\n----- ATENDIMENTO AO CLIENTE -----");
 
             System.out.print("Digite o nome do cliente: ");
             String nome = scanner.nextLine();
@@ -25,15 +26,24 @@ public class Main {
 
             for (int i = 0; i < quantidadeIngressos; i++) {
                 bilhete ingresso = new bilhete();
-                System.out.print("TIPOS DE INGRESSOS");
+                System.out.println("\nTIPOS DE INGRESSOS");
                 System.out.println("[1] - Inteira");
                 System.out.println("[2] - Meia");
                 System.out.println("[3] - Promocional");
-                System.out.print("Escolha o tipo de ingresso (1, 2 ou 3): ");
+                System.out.print("\nEscolha o tipo de ingresso sequencialmente(1, 2 ou 3): ");
                 int tipoIngresso = scanner.nextInt();
                 ingresso.setTipo(tipoIngresso);
-                ingresso.setPreco(ingresso.getPrecoBase() * ingresso.getDesconto(ingresso.getTipo()));
+
+                double precoCalculado = ingresso.getPrecoBase();
+                if (ingresso.getDesconto(ingresso.getTipo()) > 0) {
+                    precoCalculado = ingresso.getPrecoBase() - (ingresso.getPrecoBase() * ingresso.getDesconto(ingresso.getTipo()));
+                }
+                ingresso.setPreco(precoCalculado);
+                cliente.getIngressos().add(ingresso); 
             }
+
+            ResumoVenda resumo = new ResumoVenda();
+            resumo.exibirResumo(cliente, scanner); 
 
             System.out.print("\nAtender próximo cliente? (S/N): ");
             scanner.nextLine();
