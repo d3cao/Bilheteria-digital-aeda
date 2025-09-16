@@ -30,8 +30,8 @@ public class bilhete {
             return descontoMeia;
         }else if (tipo == 3){
             return descontoPromocional;
-        }else{
-            return 0.0;
+        } else {
+            return 1;
         }
     }
 

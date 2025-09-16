@@ -30,6 +30,10 @@ public class Cliente {
     }
     }
 
+    public void setIngressos(bilhete ingressos) {
+        this.ingressos.add(ingressos);
+    }
+
     public String getNome() {
         return nome;
     }
